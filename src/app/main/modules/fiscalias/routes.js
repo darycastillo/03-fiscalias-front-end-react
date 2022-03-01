@@ -1,12 +1,12 @@
 import { lazy } from 'react';
 
 const ProductsPage = lazy(() =>
-  import(/* webpackChunkName: "ProductsPage" */ './pages/ProductsPage')
+  import(/* webpackChunkName: "ProductsPage" */ './pages/FiscaliasPage')
 );
 
 export default [
   {
-    path: 'productos',
+    path: 'fiscalias',
     element: ProductsPage,
   },
 ];

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, Navigate } from 'react-router-dom';
-import { useSessionStorage } from '../../@hooks';
+import { useSessionStorage } from '@hooks';
 
 export const RequireAuth = ({ children }) => {
   const { storedValue } = useSessionStorage('login');

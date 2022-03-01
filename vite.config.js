@@ -14,15 +14,15 @@ export default defineConfig({
     alias: [
       {
         find: '@components',
-        replacement: resolve(__dirname, 'src/@components'),
+        replacement: resolve(__dirname, 'src/components'),
       },
       {
         find: '@config',
-        replacement: resolve(__dirname, 'src/@config'),
+        replacement: resolve(__dirname, 'src/config'),
       },
       {
         find: '@hooks',
-        replacement: resolve(__dirname, 'src/@hooks'),
+        replacement: resolve(__dirname, 'src/hooks'),
       },
       {
         find: '@store',

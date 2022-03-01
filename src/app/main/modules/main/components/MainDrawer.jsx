@@ -1,28 +1,15 @@
 import React from 'react';
-import { styled, useTheme } from '@mui/material/styles';
-import {
-  Avatar as MuiAvatar,
-  Box,
-  Drawer as MuiDrawer,
-  IconButton,
-  Toolbar,
-  useMediaQuery,
-} from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { Box, Drawer as MuiDrawer, IconButton, Toolbar } from '@mui/material';
 
 import {
   ChevronLeft as ChevronLeftIcon,
-  Dashboard as DashboardIcon,
   Menu as MenuIcon,
-  ShoppingCart as ShoppingCartIcon,
-  Settings as SettingsIcon,
 } from '@mui/icons-material';
 import { useSelector, useDispatch } from 'react-redux';
 import * as Actions from '../store/actions';
 
-import ComputerIcon from '@mui/icons-material/Computer';
-import ViewModuleIcon from '@mui/icons-material/ViewModule';
-import GroupIcon from '@mui/icons-material/Group';
-import LightbulbIcon from '@mui/icons-material/Lightbulb';
+import FlagIcon from '@mui/icons-material/Flag';
 import ListNav from './ListNav';
 
 const styledIcon = {
@@ -36,22 +23,6 @@ const boxIconAvatar = {
     marginBottom: '30px',
   },
 };
-
-const Avatar = styled(MuiAvatar)(({ theme, open }) => ({
-  '&.MuiAvatar-root': {
-    [theme.breakpoints.down('sm')]: {
-      width: '48px',
-      height: '48px',
-      marginBottom: '30px',
-      backgroundColor: 'orange',
-    },
-    [theme.breakpoints.up('sm')]: {
-      width: open ? '86px' : '48px',
-      height: open ? '86px' : '48px',
-      backgroundColor: 'red',
-    },
-  },
-}));
 
 const Drawer = styled(MuiDrawer)(({ theme, open }) => ({
   '& .MuiDrawer-paper': {
@@ -81,8 +52,6 @@ const Drawer = styled(MuiDrawer)(({ theme, open }) => ({
 }));
 
 const MainDrawer = () => {
-  const theme = useTheme();
-  const isUpSM = useMediaQuery(theme.breakpoints.up('sm'));
   const dispatch = useDispatch();
   const open = useSelector(
     ({ MainNavigation }) => MainNavigation.MainDrawer.openDrawer
@@ -94,50 +63,14 @@ const MainDrawer = () => {
 
   const routes = [
     {
-      to: 'dashboard',
-      icon: <DashboardIcon sx={styledIcon} />,
-      name: 'Dashboard',
-    },
-    {
-      to: 'admin',
-      icon: <SettingsIcon sx={styledIcon} />,
-      name: 'Administrador',
-      children: [
-        {
-          to: 'acciones',
-          icon: <ComputerIcon sx={styledIcon} />,
-          name: 'Acciones',
-        },
-        {
-          to: 'admin/modulos',
-          icon: <ViewModuleIcon sx={styledIcon} />,
-          name: 'Módulos',
-        },
-        {
-          to: 'usuarios',
-          icon: <GroupIcon sx={styledIcon} />,
-          name: 'Usuarios',
-        },
-        {
-          to: 'roles',
-          icon: <LightbulbIcon sx={styledIcon} />,
-          name: 'Roles',
-        },
-      ],
-    },
-    {
-      to: 'productos',
-      icon: <ShoppingCartIcon sx={styledIcon} />,
-      name: 'Productos',
+      to: 'fiscalias',
+      icon: <FlagIcon sx={styledIcon} />,
+      name: 'Fiscalias',
     },
   ];
 
   return (
-    <Drawer
-      variant={isUpSM ? 'permanent' : 'temporary'}
-      open={open}
-      onClose={toggleDrawer}
-    >
+    <Drawer open={open} onClose={toggleDrawer}>
       <Toolbar
         sx={{
           display: 'flex',
@@ -154,7 +87,7 @@ const MainDrawer = () => {
       </Toolbar>
 
       <Box sx={boxIconAvatar}>
-        <Avatar open={open}>H</Avatar>
+        <img src="/img/MP_logo.png" width="140px"></img>
       </Box>
 
       <ListNav routes={routes} open={open} />

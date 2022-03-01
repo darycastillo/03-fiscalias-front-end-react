@@ -1,7 +1,6 @@
 import { Suspense } from 'react';
 import Provider from 'react-redux/es/components/Provider';
 import { useRoutes, BrowserRouter } from 'react-router-dom';
-import { AbilityProvider } from './context/permissions/AbilityContext';
 import CustomTheme from '@components/theme/CustomTheme';
 import { LoadingPage } from '@components/routerComponents/Navigation';
 import store from './store';
@@ -13,9 +12,7 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <AbilityProvider>
-        <CustomTheme>{navigation}</CustomTheme>
-      </AbilityProvider>
+      <CustomTheme>{navigation}</CustomTheme>
     </Provider>
   );
 };
