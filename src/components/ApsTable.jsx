@@ -19,6 +19,7 @@ import { withStyles } from '@mui/styles';
 import ApsTextField from '@components/ApsTextField';
 import SearchIcon from '@mui/icons-material/Search';
 import EditIcon from '@mui/icons-material/Edit';
+import { DeleteForeverSharp } from '@mui/icons-material';
 
 const CustomTextField = withStyles({
   root: {
@@ -30,7 +31,7 @@ const CustomTextField = withStyles({
   },
 })(ApsTextField);
 
-export default function ApsTable({ columns, rows }) {
+export default function ApsTable({ columns, rows, fabProps, searchProps }) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -63,6 +64,7 @@ export default function ApsTable({ columns, rows }) {
               </InputAdornment>
             ),
           }}
+          {...searchProps}
         />
         <Grid
           item
@@ -75,7 +77,7 @@ export default function ApsTable({ columns, rows }) {
             alignItems: 'flex-end',
           }}
         >
-          <Fab color="primary">
+          <Fab color="primary" {...fabProps}>
             <AddIcon />
           </Fab>
         </Grid>
@@ -110,9 +112,14 @@ export default function ApsTable({ columns, rows }) {
                       return (
                         <TableCell key={index} align={column.align}>
                           {typeof value === 'function' ? (
-                            <IconButton onClick={() => row['acciones'](row)}>
-                              <EditIcon />
-                            </IconButton>
+                            <>
+                              <IconButton onClick={() => row['edit'](row)}>
+                                <EditIcon />
+                              </IconButton>
+                              <IconButton onClick={() => row['delete'](row)}>
+                                <DeleteForeverSharp color="error" />
+                              </IconButton>
+                            </>
                           ) : (
                             <Typography
                               color={value === 'INACTIVA' ? 'error' : ''}

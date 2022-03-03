@@ -42,7 +42,7 @@ const useFormikFields = ({ fields }) => {
   const [initialValues] = useState(() => {
     const values = Object.entries(fields).reduce((acc, field) => {
       const name = field[1].name;
-      const intialValue = field[1].value || '';
+      const intialValue = field[1].intialValue || '';
       Object.assign(acc, { [name]: intialValue });
       return acc;
     }, {});

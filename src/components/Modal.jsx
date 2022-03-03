@@ -37,18 +37,18 @@ function Modal(props) {
       id="alert-dialog"
       open={open}
       onClose={onClose}
-      disableBackdropClick={loading}
+      // disableBackdropClick={loading}
       disableEscapeKeyDown={loading}
       fullWidth={fullWidth}
       maxWidth={maxWidth}
       {...dialogProps}
     >
       <DialogTitle id="alert-dialog-title" {...titleProps}>
-        <Typography variant={variantTitle} children={title} />
+        <Typography component="div" variant={variantTitle} children={title} />
       </DialogTitle>
       <DialogContent id="alert-dialog-content" {...contentProps}>
         <DialogContentText>
-          <Typography variant={variantDescription} children={description} />
+          <Typography component="span" variant={variantDescription} children={description} />
         </DialogContentText>
         {content}
       </DialogContent>
@@ -56,7 +56,7 @@ function Modal(props) {
         <Button onClick={handleCancel} color="secondary" autoFocus>
           {titleCancel}
         </Button>
-        <Button onClick={handleOk} color="primary" variant={variantOk}>
+        <Button onClick={handleOk} color="error" variant={variantOk}>
           {titleOk}
         </Button>
       </DialogActions>

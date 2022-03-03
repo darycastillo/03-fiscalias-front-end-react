@@ -1,12 +1,22 @@
 import { lazy } from 'react';
+import FormFiscaliasPage from './pages/FormFiscaliaPage';
 
-const ProductsPage = lazy(() =>
-  import(/* webpackChunkName: "ProductsPage" */ './pages/FiscaliasPage')
+const FiscaliasPage = lazy(() =>
+  import(/* webpackChunkName: "FiscaliasPage" */ './pages/FiscaliasPage')
 );
 
 export default [
   {
     path: 'fiscalias',
-    element: ProductsPage,
+    children: [
+      { index: true, element: FiscaliasPage },
+      {
+        path: 'formulario',
+        children: [
+          { index: true, element: FormFiscaliasPage },
+          { path: ':id', element: FormFiscaliasPage },
+        ],
+      },
+    ],
   },
 ];

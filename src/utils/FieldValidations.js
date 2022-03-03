@@ -33,10 +33,11 @@ export const FieldValidations = {
   required: yup.string().required(MESSAGES.CAMPO_REQUERIDO),
   numberInger: ({ required } = {}) =>
     yup
-      .number()
+      .string()
       .typeError('Debe ser un número')
-      .integer('Debe ser un entero')
-      .required(required ? MESSAGES.CAMPO_REQUERIDO : null),
+      .matches(/^[0-9]+$/, 'Solo se permiten dígitos')
+      .required(required ? MESSAGES.CAMPO_REQUERIDO : null)
+      .min(8, 'Debe contener almenos 8 dígitos'),
   requiredSelect: yup.mixed().requiredSelect(),
 };
 

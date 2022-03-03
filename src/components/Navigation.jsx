@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { Backdrop /* CircularProgress */ } from '@mui/material';
+import { Backdrop, CircularProgress } from '@mui/material';
 import RequireAuth from './RequireAuth';
 
 export const LoadingPage = () => {
@@ -12,8 +12,7 @@ export const LoadingPage = () => {
       }}
       open={true}
     >
-      {/* <CircularProgress color="inherit" /> */}
-      <img src="/img/loading_1.gif" alt="" />
+      <CircularProgress color="inherit" size="10rem" />
     </Backdrop>
   );
 };

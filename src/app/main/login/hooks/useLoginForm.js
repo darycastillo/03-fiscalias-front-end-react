@@ -28,7 +28,7 @@ export const useLogin = () => {
       main: [mainPage],
     },
   } = useRouter();
-  
+
   const formik = useFormik({
     initialValues: {
       email: '',

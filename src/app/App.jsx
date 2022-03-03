@@ -1,8 +1,8 @@
 import { Suspense } from 'react';
 import Provider from 'react-redux/es/components/Provider';
 import { useRoutes, BrowserRouter } from 'react-router-dom';
-import CustomTheme from '@components/theme/CustomTheme';
-import { LoadingPage } from '@components/routerComponents/Navigation';
+import CustomTheme from '../theme/CustomTheme';
+import { LoadingPage } from '@components/Navigation';
 import store from './store';
 import { useRouter } from '@hooks';
 

@@ -1,8 +1,6 @@
-import { Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
 import SaveIcon from '@mui/icons-material/Save';
-
-//import MoreMenu from './MoreMenu';
 
 const titlePropsLocal = {
   variant: 'h1',
@@ -14,49 +12,17 @@ const subtitlePropsLocal = {
   sx: { color: (theme) => theme.palette.secondary[500] },
 };
 
-/**
- * @title {string} Título de la página.
- * @titleProps {object} objeto de propiedades para modificar el título.
- * @subtitle {string} Subtítulo de la página.
- * @subtitleProps {string} Subtítulo de la página.
- * @actions {array} es un array de objetos que se mostraran como acciones.
- * @container {components} contenido de la página.
- *
- * ---------------------EJEMPLO DE USO---------------------
- * <GeneralContainer
- *  title='Dashboard'
- *  subtitle='Subtitulo del dashboard'
- *  actions=[
-  {
-    id: 1,
-    icon: <PrintIcon fontSize="small" />,
-    title: 'Imprimir',
-    onClick: () => console.log('Imprimir'),
-  },
-  {
-    id: 2,
-    icon: <CloudDownloadIcon fontSize="small" />,
-    title: 'Descargar',
-    onClick: () => console.log('Descargar'),
-  },
-]
- *  container={<div>Contenido de la página</div>}
- * />
- * --------------------------------------------------------
- */
-
-const GeneralContainer = ({
+const Layout = ({
   title = 'Title',
   titleProps,
   subtitle = 'Subtitle',
   subtitleProps,
   buttonProps,
-  //actions,
+  cancelProps,
   container,
-  // ...props
 }) => {
   return (
-    <div style={{ /* height: '100vh' */ height: 'auto' }}>
+    <div style={{ height: 'auto' }}>
       <div
         style={{
           display: 'flex',
@@ -75,7 +41,13 @@ const GeneralContainer = ({
             children={subtitle}
           />
         </div>
-        {/*  <MoreMenu actions={actions} /> */}
+        <div>
+          {cancelProps && (
+            <Button variant="outlined" {...cancelProps}>
+              Cancelar
+            </Button>
+          )}
+        </div>
       </div>
       <div style={{ width: '100%', height: '100%' }}>
         {container}
@@ -96,7 +68,6 @@ const GeneralContainer = ({
                 height: '56px',
               }}
               color="primary"
-              //loading
               loadingPosition="start"
               startIcon={<SaveIcon sx={{ marginLeft: '4px' }} />}
               variant="contained"
@@ -111,4 +82,4 @@ const GeneralContainer = ({
   );
 };
 
-export default GeneralContainer;
+export default Layout;
