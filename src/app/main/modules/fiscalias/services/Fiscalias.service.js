@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { URL_NODE_SERVICES, URL_JAVA_SERVICES } from './config';
 
 export const post = (body = {}) => {
   return axios
-    .post('http://localhost:8080/Fiscalias/api/fiscalias', body)
+    .post(`${URL_JAVA_SERVICES}/api/fiscalias`, body)
     .then((response) => {
       return response;
     })
@@ -13,7 +14,7 @@ export const post = (body = {}) => {
 
 export const get = () => {
   return axios
-    .get('http://localhost:4000/api/fiscalias')
+    .get(`${URL_NODE_SERVICES}/api/fiscalias`)
     .then((departamentos) => {
       return departamentos.data.data.map((fiscalia) => ({
         id: fiscalia.Id,
@@ -30,7 +31,7 @@ export const get = () => {
 
 export const update = (body = {}) => {
   return axios
-    .put('http://localhost:8080/Fiscalias/api/fiscalias', body)
+    .put(`${URL_JAVA_SERVICES}/api/fiscalias`, body)
     .then((response) => {
       console.log({ response });
       return response;
@@ -42,7 +43,7 @@ export const update = (body = {}) => {
 
 export const deleteF = (id) => {
   return axios
-    .put(`http://localhost:8080/Fiscalias/api/fiscalias/${id}`, {})
+    .put(`${URL_JAVA_SERVICES}/api/fiscalias/${id}`, {})
     .then((response) => {
       return response;
     })

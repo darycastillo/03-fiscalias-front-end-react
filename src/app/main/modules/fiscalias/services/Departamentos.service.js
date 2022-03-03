@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { URL_NODE_SERVICES } from './config';
 
 export const get = () => {
   return axios
-    .get('http://localhost:4000/api/departamentos')
+    .get(`${URL_NODE_SERVICES}/api/departamentos`)
     .then((departamentos) => {
       return departamentos.data.data.map((departamento) => ({
         value: departamento.Id,

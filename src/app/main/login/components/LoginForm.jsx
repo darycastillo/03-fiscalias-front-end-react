@@ -31,9 +31,7 @@ const LoginForm = () => {
           backgroundSize: '100%',
           marginBottom: '32px',
         }}
-      >
-        {' '}
-      </div>
+      ></div>
       <Typography
         variant="h1"
         color="primary"
