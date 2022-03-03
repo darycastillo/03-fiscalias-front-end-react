@@ -5,9 +5,10 @@ export const get = () => {
   return axios
     .get(`${URL_NODE_SERVICES}/api/municipios`)
     .then((municipios) => {
-      return municipios.data.data.map((municipios) => ({
-        value: municipios.Id,
-        label: municipios.Nombre,
+      return municipios.data.data.map((municipio) => ({
+        value: municipio.Id,
+        label: municipio.Nombre,
+        Departamento_id: municipio.Departamento_id,
       }));
     })
     .catch((err) => {

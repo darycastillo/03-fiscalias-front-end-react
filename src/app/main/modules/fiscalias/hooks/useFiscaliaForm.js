@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useFormikFields } from '@hooks';
 import { FieldValidations } from '@utils';
 import { Departamentos, Fiscalias, Municipios } from '../services';
+import { useUpdateEffect } from '@hooks';
 
 const useFiscaliaForm = () => {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ const useFiscaliaForm = () => {
     municipios: [],
     departamentos: [],
   });
+  const [municipiosFiltered, setMunicipiosFiltered] = useState();
   const [loading, setLoading] = useState(false);
   const titleHeader = fiscalia ? 'Editar Fiscalia' : 'Crear Fiscalia';
   const fields = [
@@ -48,7 +50,7 @@ const useFiscaliaForm = () => {
       name: 'municipio_id',
       gridItem: true,
       select: true,
-      options: catalogs.municipios,
+      options: municipiosFiltered,
       intialValue: '-1',
       validations: FieldValidations.requiredSelect,
     },
@@ -70,6 +72,7 @@ const useFiscaliaForm = () => {
     });
     Municipios.get().then((municipios) => {
       setCatalogs((prev) => ({ ...prev, municipios }));
+      setMunicipiosFiltered(municipios);
     });
   }, []);
 
@@ -85,6 +88,14 @@ const useFiscaliaForm = () => {
       });
     }
   }, [fiscalia]);
+
+  useUpdateEffect(() => {
+    const departamento_id = formik.values.departamento_id;
+    const municipiosFiltered = catalogs.municipios.filter(
+      (municipo) => municipo.Departamento_id === departamento_id
+    );
+    setMunicipiosFiltered(municipiosFiltered);
+  }, [formik.values.departamento_id]);
 
   const formikSubmit = async () => {
     setLoading(true);
