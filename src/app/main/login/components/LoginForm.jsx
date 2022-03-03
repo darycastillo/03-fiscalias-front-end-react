@@ -22,8 +22,24 @@ const LoginForm = () => {
         alignItems: 'center',
       }}
     >
-      <Typography variant="h1" color="primary" sx={{ marginBottom: '80px' }}>
-        Iniciar sesion
+      <div
+        style={{
+          height: '90px',
+          width: '180px',
+          backgroundImage: 'url(/img/MP_logo.png)',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: '100%',
+          marginBottom: '32px',
+        }}
+      >
+        {' '}
+      </div>
+      <Typography
+        variant="h1"
+        color="primary"
+        sx={{ marginBottom: '80px' /* color: '#FFFFFF' */ }}
+      >
+        Iniciar sesión
       </Typography>
       <Box component="form" onSubmit={formik.handleSubmit}>
         <ApsTextField

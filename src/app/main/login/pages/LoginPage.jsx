@@ -7,36 +7,33 @@ const leftGridProps = {
   item: true,
   xs: false,
   sm: false,
-  md: 6,
+  md: 12,
   sx: {
-    backgroundImage: 'url(https://source.unsplash.com/random)',
-    backgroundRepeat: 'no-repeat',
-    backgroundColor: (t) =>
-      t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-    backgroundSize: 'cover',
     backgroundPosition: 'center',
-  },
-};
-
-const rightGridProps = {
-  item: true,
-  xs: 12,
-  sm: 12,
-  md: 6,
-  component: Paper,
-  elevation: 0,
-  sx: {
+    backgroundSize: '100%',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    height: '100%',
   },
 };
 
 const SignInSide = () => {
   return (
-    <Grid container component="main" sx={{ height: '100vh' }}>
-      <Grid {...leftGridProps} />
-      <Grid {...rightGridProps}>
+    <Grid
+      container
+      component="main"
+      sx={(theme) => ({
+        // backgroundImage: 'url(/img/fondo.jpeg)',
+        backgroundColor: theme.palette.secondary[50],
+        backgroundRepeat: 'no-repeat',
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+      })}
+    >
+      <Grid {...leftGridProps}>
         <LoginForm />
       </Grid>
     </Grid>
